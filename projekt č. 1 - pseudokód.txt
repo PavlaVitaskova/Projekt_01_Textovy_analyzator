@@ -1,0 +1,25 @@
+projekt č. 1 - pseudokód
+
+možná použít metodu listu - index (hledá v listu zadanou hodnotu a vrací index, na kterém najde hodnotu)
+
+
+pro analýzu vybraného textu -> uložit text do nové proměnné selected_text
+až potom zpracovat text dál
+
+1. počet slov:
+	- očistit text od interpunkce a mezer
+	- rozdělit text na slova
+	- spočítat slova
+
+2. počet slov začínajících velkým písmenem,
+
+3. počet slov psaných velkými písmeny,
+
+4. počet slov psaných malými písmeny,
+
+5. počet čísel (ne cifer),
+
+6. sumu všech čísel (ne cifer) v textu.
+
+
+
