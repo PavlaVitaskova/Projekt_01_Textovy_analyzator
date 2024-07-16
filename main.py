@@ -115,9 +115,24 @@ print(f"The sum of all the numbers {total_sum}")
 print(ODDELOVAC)
 
 # 7. Bar graph (frequency of different word lengths in the text):
-occurences = list()
+list_of_occurences = list()
 
 for word in text_words:
-    occurences.append(len(word))
+    list_of_occurences.append(len(word))
 
+from collections import Counter
 
+# 7.1 count the occurrences of each number
+occurrences = Counter(list_of_occurences)
+
+# 7.2 sort the items by number
+sorted_occurrences = sorted(occurrences.items())
+
+# Print the header
+print(f"{'LEN':<2} | {'OCCURRENCES':<13} | {'NR.':<3}")
+print("-" * 40)
+
+# Print each row
+for length, count in sorted_occurrences:
+    stars = '*' * count
+    print(f"{length:<2} | {stars:<13} | {count:<3}")
