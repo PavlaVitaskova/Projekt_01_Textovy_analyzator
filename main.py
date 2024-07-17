@@ -1,16 +1,18 @@
-# 1. intro
+# 1. I ntro
 """
 projekt_1.py: první projekt do Engeto Online Python Akademie
 author: Pavla Vitásková
 email: pavlavitaskova.pv@gmail.com
 discord: pavlavitaskova_29682
 """
+
+# 2. Imports and constants
 ODDELOVAC = "-" * 40
 
-# 1.1 import variable from task_template.py:
+# 2.1 Import variable from task_template.py:
 from task_template import TEXTS
 
-# 2. import PrettyTable and create users dictionary
+# 2.2 Import PrettyTable and create users dictionary
 from prettytable import PrettyTable
 
 registrated_users = {
@@ -23,17 +25,20 @@ registrated_users = {
 table = PrettyTable()
 table.field_names = ["user", "password"]
 
-# 2.1 rows in table
+# 2.2.1 Rows in table
 for user, password in registrated_users.items():
     table.add_row([user, password])
 
 #print(table)
 
-# 3. login
+# 2.3 Import Counter to create bar graph
+from collections import Counter
+
+# 3. Login
 user_name = input("username: ")
 user_password = input("password: ")
 
-# 4. verify user data
+# 4. Verify user data
 if registrated_users.get(user_name) == user_password:
     print(ODDELOVAC)
     print(f"""Welcome to the app, {user_name}.
@@ -45,20 +50,19 @@ We have 3 texts to be analysed."""
 else:
     print("Unregistered user, terminating the program.")
 
-# 5. user selects the text
+# 5. User selects the text
 selected_text = TEXTS[(int(select_number)) - 1]
 
+# 6. Perform statistics on selected text
 
-# 6. perform statistics on selected text
-
-# 6.1 count the words
+# 6.1 Count all words
 text_without_whitespaces = selected_text.strip()
 text_words = text_without_whitespaces.split()
 words_count = len(text_words)
 
 print(f"There are {words_count} words in the selected text.")
 
-# 6.2 count the title words
+# 6.2 Count all words in a string that start with a capital letter
 title_words = 0
 
 for word in text_words:
@@ -67,7 +71,7 @@ for word in text_words:
 
 print(f"There are {title_words} titlecase words.")
 
-# 6.3 count the upper words
+# 6.3 Count all words with uppercase letters
 upper_words = 0
 
 for word in text_words:
@@ -76,7 +80,7 @@ for word in text_words:
 
 print(f"There are {upper_words} uppercase words.")
 
-# 6.4 count the lower words
+# 6.4 Count all words with lowercase letters
 lower_words = 0
 
 for word in text_words:
@@ -85,7 +89,7 @@ for word in text_words:
 
 print(f"There are {lower_words} lowercase words.")
 
-# 6.5 count the numbers
+# 6.5 Count all the numbers
 numbers = 0
 
 for word in text_words:
@@ -94,23 +98,19 @@ for word in text_words:
 
 print(f"There are {numbers} numeric strings.")
 
-# 6.6 sum the numbers
-number_strings = list()
+# 6.6 Sum of numbers
 
-for word in text_words:
-    if word.isdigit():
-        number_strings.append(word)
+# 6.6.1 Convert each string to int:
 
-# 6.6.1 convert each string to int:
 numbers_int = list()
 
-for num in number_strings:
-    numbers_int.append(int(num))
+for num in text_words:
+    if num.isdigit():
+        numbers_int.append(int(num))
 
-# 6.6.2 sum the integers:
+# 6.6.2 Sum the integers:
 total_sum = sum(numbers_int)
 
-# 6.6.3 result
 print(f"The sum of all the numbers {total_sum}")
 print(ODDELOVAC)
 
@@ -120,19 +120,17 @@ list_of_occurences = list()
 for word in text_words:
     list_of_occurences.append(len(word))
 
-from collections import Counter
-
-# 7.1 count the occurrences of each number
+# 7.1 Count the occurrences of each number
 occurrences = Counter(list_of_occurences)
 
-# 7.2 sort the items by number
+# 7.2 Sort the items by number
 sorted_occurrences = sorted(occurrences.items())
 
-# Print the header
-print(f"{'LEN':<2} | {'OCCURRENCES':<13} | {'NR.':<3}")
+# 7.3 Print the header
+print(f"{'LEN':<2} | {'OCCURRENCES':<16} | {'NR.':<3}")
 print("-" * 40)
 
-# Print each row
+# 7.4 Print each row
 for length, count in sorted_occurrences:
     stars = '*' * count
-    print(f"{length:<2} | {stars:<13} | {count:<3}")
+    print(f"{length:<2} | {stars:<16} | {count:<3}")
