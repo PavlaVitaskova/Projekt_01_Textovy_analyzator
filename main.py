@@ -12,8 +12,6 @@ ODDELOVAC = "-" * 40
 # 2.1 Import variable from task_template.py:
 from task_template import TEXTS
 
-# 2.2 Import PrettyTable and create users dictionary
-from prettytable import PrettyTable
 
 registrated_users = {
     "bob": "123",
@@ -22,14 +20,6 @@ registrated_users = {
     "liz": "pass123"
 }
 
-table = PrettyTable()
-table.field_names = ["user", "password"]
-
-# 2.2.1 Rows in table
-for user, password in registrated_users.items():
-    table.add_row([user, password])
-
-#print(table)
 
 # 2.3 Import Counter to create bar graph
 from collections import Counter
