@@ -20,7 +20,6 @@ registrated_users = {
     "liz": "pass123"
 }
 
-
 # 2.3 Import Counter to create bar graph
 from collections import Counter
 
@@ -35,13 +34,21 @@ if registrated_users.get(user_name) == user_password:
 We have 3 texts to be analysed."""
     )
     print(ODDELOVAC)
-    select_number = input("Enter a number btw. 1 and 3 to select: ")
+
+while True:
+    answer = input("Enter a number btw. 1 and 3 to select: ")
+
+    if answer.isnumeric() and int(answer) in range(1, 4):
+        break
+    else:
+        print("The value you entered doesn't match the requirements. Try again.")
+    
     print(ODDELOVAC)
 else:
     print("Unregistered user, terminating the program.")
 
 # 5. User selects the text
-selected_text = TEXTS[(int(select_number)) - 1]
+selected_text = TEXTS[(int(answer)) - 1]
 
 # 6. Perform statistics on selected text
 
