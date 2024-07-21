@@ -1,4 +1,4 @@
-# 1. I ntro
+# 1. Intro
 """
 projekt_1.py: první projekt do Engeto Online Python Akademie
 author: Pavla Vitásková
@@ -9,19 +9,16 @@ discord: pavlavitaskova_29682
 # 2. Imports and constants
 ODDELOVAC = "-" * 40
 
-# 2.1 Import variable from task_template.py:
+# 2.1 Import variable from task_template.py
 from task_template import TEXTS
 
-
+# 2.2 Registrated users dictionary
 registrated_users = {
     "bob": "123",
     "ann": "pass123",
     "mike": "password123",
     "liz": "pass123"
 }
-
-# 2.3 Import Counter to create bar graph
-from collections import Counter
 
 # 3. Login
 user_name = input("username: ")
@@ -31,7 +28,8 @@ user_password = input("password: ")
 if registrated_users.get(user_name) == user_password:
     print(ODDELOVAC)
     print(f"""Welcome to the app, {user_name}.
-We have 3 texts to be analysed."""
+We have 3 texts to be analysed.
+{ODDELOVAC}"""
     )
 
     while True:
@@ -57,9 +55,12 @@ selected_text = TEXTS[(int(answer)) - 1]
 
 # 6.1 Count all words
 just_words = selected_text.split()
-cleaned_words = []                  
+cleaned_words = []
+
 # vím, že .strip je to pro účel programu zbytečný krok,
-# ale chci mít čistá slova pro další pokusy s programem
+# ale chci mít čistá slova pro další pokusy s programem,
+# zároveň opravuji chybu minulé verze programu
+# kdyby to vadilo, smažu to
 
 for word in just_words:
     word = word.strip('.,')
@@ -93,7 +94,7 @@ for word in cleaned_words:
 print(f"""There are {title_words} titlecase words.
 There are {uppercase_words} uppercase words.
 There are {lowercase_words} lowercase words.
-"There are {numbers} numeric strings.""")
+There are {numbers} numeric strings.""")
 
 # 6.3 Sum of numbers
 
@@ -111,29 +112,31 @@ print(f"The sum of all the numbers {total_sum}")
 print(ODDELOVAC)
 
 # 7. Bar graph (frequency of different word lengths in the text):
+
+# 7.1 Word lengths in selected text
 list_of_occurences = list()
 
 for word in cleaned_words:
     list_of_occurences.append(len(word))
 
+# 7.2 How to get pairs (word lenght, number of occurrences)
 dict_occurences = {}
 
-# Cyklus přes seznam a počítání výskytů
-for number_letters in list_of_occurences:
-    if number_letters in dict_occurences:
-        dict_occurences[number_letters] += 1
+for word_lenght in list_of_occurences:
+    if word_lenght in dict_occurences:
+        dict_occurences[word_lenght] += 1
     else:
-        dict_occurences[number_letters] = 1
+        dict_occurences[word_lenght] = 1
 
 sorted_dict_occurences = dict(sorted(dict_occurences.items()))
 
 pairs = sorted_dict_occurences.items()
 
 # 7.3 Print the header
-print(f"{'LEN':<2} | {'OCCURRENCES':<16} | {'NR.':<3}")
-print("-" * 40)
+print(f"{'LEN':<3} | {'OCCURRENCES':<17} | {'NR.':<3}")
+print(ODDELOVAC)
 
 # 7.4 Print each row
-for length, count in pairs:
-    stars = '*' * count
-    print(f"{length:<2} | {stars:<16} | {count:<3}")
+for length, occurances in pairs:
+    stars = "*" * occurances
+    print(f"{length:<3} | {stars:<17} | {occurances:<3}")
