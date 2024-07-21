@@ -21,5 +21,8 @@ až potom zpracovat text dál
 
 6. sumu všech čísel (ne cifer) v textu.
 
+7. frekvence délky slov
+
+
 
 
